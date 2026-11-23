@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f2">
+  <meta name="description" content="還活著嗎？讓你用有空、勿擾與一句狀態，和好友分享何時方便聯絡。留一點時間，給自己。">
+  <meta property="og:title" content="還活著嗎？｜和好友分享何時方便聯絡">
+  <meta property="og:description" content="讓好友知道，什麼時候是剛剛好的時候。iOS 聯絡狀態分享 App。">
+  <meta property="og:type" content="website">
+  <title>還活著嗎？｜和好友分享何時方便聯絡</title>
+  <link rel="icon" type="image/png" href="assets/app-icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">跳至主要內容</a>
+  <header class="site-header wrap">
+    <a class="brand" href="#" aria-label="還活著嗎？首頁"><img src="assets/app-icon.png" width="36" height="36"
+        alt=""><span>還活著嗎？</span></a>
+    <nav aria-label="主要導覽"><a class="nav-demo" href="#demo">體驗 App</a><a href="#features">功能</a></nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">有空，<br>或晚點再說。</h1>
+        <p class="intro">設定「有空」或「勿擾」，或說明目前狀態，讓好友知道現在方不方便。</p>
+        <div class="hero-actions"><a class="button primary" href="#demo">試玩</a><span class="platform">iOS 17 以上 <span
+              aria-hidden="true">·</span> 繁體中文</span></div>
+        <div class="status-notes" aria-label="狀態範例"><span><i class="dot green"></i>有空，走走？</span><span><i
+              class="dot purple"></i>勿擾，閱讀中</span></div>
+      </div>
+
+      <div class="showcase" id="demo">
+        <div class="orbit orbit-one" aria-hidden="true"></div>
+        <div class="orbit orbit-two" aria-hidden="true"></div>
+        <div class="phone" aria-label="還活著嗎？ 互動介面示意">
+          <div class="phone-screen">
+            <div class="device-status" aria-hidden="true"><span>9:41</span><span class="island"></span><span
+                class="device-signals">▮▮▮ <svg viewBox="0 0 24 18">
+                  <rect x="1" y="3" width="18" height="12" rx="3" />
+                  <rect x="3.5" y="5.5" width="13" height="7" rx="1" style="fill:currentColor;stroke:none" />
+                  <path d="M22 7v4" />
+                </svg></span></div>
+            <div class="app-header">
+              <h2 id="app-title">我的狀態</h2><span class="app-tools" aria-hidden="true"><svg viewBox="0 0 24 24">
+                  <path d="M5 17h14l-2-3V9a5 5 0 0 0-10 0v5zm5 3h4" />
+                </svg><span>＋</span><svg viewBox="0 0 24 24">
+                  <path d="M5 6h14M5 12h14M5 18h14" />
+                </svg></span>
+            </div>
+            <div class="app-page" id="status-panel" role="tabpanel" aria-labelledby="status-tab">
+              <p class="app-slogan">YOUR TIME, YOUR SPACE</p>
+              <div class="current-card" id="current-card">
+                <div class="current-caption"><span><i class="dot green" id="current-dot"></i>目前狀態</span><span
+                    class="status-symbol" id="current-symbol" aria-hidden="true">☀</span></div>
+                <div class="current-state" id="current-state">有空</div>
+                <p id="current-message"></p>
+              </div>
+              <p class="last-update" id="last-update">上次更新：今天 09:41</p>
+              <div class="editor-card">
+                <div class="availability-row">
+                  <fieldset class="availability">
+                    <legend class="sr-only">選擇狀態</legend><label class="status-option available"><input type="radio"
+                        name="availability" value="available" checked><span><b aria-hidden="true">☀</b>
+                        有空</span></label><label class="status-option dnd"><input type="radio" name="availability"
+                        value="dnd"><span><b aria-hidden="true">☾</b> 勿擾</span></label>
+                  </fieldset><button class="clear-status" id="clear-status" type="button">清除</button>
+                </div>
+                <label class="message-label" for="demo-message">狀態文字</label><input id="demo-message" type="text"
+                  value="散步中，隨時聊聊" maxlength="100" autocomplete="off"><span class="character-count"
+                  id="character-count">9 / 100</span>
+                <div class="end-time"><label for="demo-duration">結束於</label><select id="demo-duration">
+                    <option value="30">30 分鐘後</option>
+                    <option value="60">1 小時後</option>
+                    <option value="120">2 小時後</option>
+                    <option value="none" selected>不限</option>
+                  </select></div>
+                <button class="publish-button" id="publish-status" type="button">設定</button>
+              </div>
+              <details class="recent-status">
+                <summary>最近使用的狀態</summary><button type="button" id="restore-status">散步中，隨時聊聊</button>
+              </details>
+              <p class="demo-feedback" id="demo-feedback" role="status">預覽中的資料不會保存或傳送</p>
+            </div>
+            <div class="app-page friends-page" id="friends-panel" role="tabpanel" aria-labelledby="friends-tab" hidden>
+
+              <p class="friend-section-label">好友（3）</p>
+              <div class="friend-list">
+                <div class="friend-card"><span class="avatar lavender">Y<span id="self-symbol"
+                      class="friend-icon available-text" aria-hidden="true">☀</span></span>
+                  <div>
+                    <div class="friend-heading">
+                      <h3>我 <span id="self-state" class="friend-state available-text">有空</span></h3>
+                      <div class="friend-location"><span role="img" aria-label="台灣">🇹🇼</span><time
+                          data-time-zone="Asia/Taipei"></time></div>
+                    </div>
+                    <p id="self-message">散步中，隨時聊聊</p>
+                  </div>
+                </div>
+                <div class="friend-card"><span class="avatar mint">J<span class="friend-icon available-text"
+                      aria-hidden="true">☀</span></span>
+                  <div>
+                    <div class="friend-heading">
+                      <h3>Jamie <span class="friend-state available-text">有空</span></h3>
+                      <div class="friend-location"><span role="img" aria-label="日本">🇯🇵</span><time
+                          data-time-zone="Asia/Tokyo"></time></div>
+                    </div>
+                    <p>咖啡時間，來聊聊？</p>
+                  </div>
+                </div>
+                <div class="friend-card"><span class="avatar lavender">A<span class="friend-icon dnd-text"
+                      aria-hidden="true">☾</span></span>
+                  <div>
+                    <div class="friend-heading">
+                      <h3>Alex <span class="friend-state dnd-text">勿擾</span></h3>
+                      <div class="friend-location"><span role="img" aria-label="美國">🇺🇸</span><time
+                          data-time-zone="America/Los_Angeles"></time></div>
+                    </div>
+                    <p>專心閱讀中</p><span class="friend-time">30 分鐘後結束</span>
+                  </div>
+                </div>
+                <div class="friend-card"><span class="avatar sand">S<span class="friend-icon available-text"
+                      aria-hidden="true">☀</span></span>
+                  <div>
+                    <div class="friend-heading">
+                      <h3>Sam <span class="friend-state available-text">有空</span></h3>
+                      <div class="friend-location"><span role="img" aria-label="英國">🇬🇧</span><time
+                          data-time-zone="Europe/London"></time></div>
+                    </div>
+                    <p>今天想去走走</p>
+                  </div>
+                </div>
+              </div>
+              <div class="friends-note"><span aria-hidden="true">♡</span>
+                <p>知道彼此的節奏，<br>聯繫也能輕鬆一點。</p>
+              </div>
+
+            </div>
+            <div class="app-tabs" role="tablist" aria-label="介面示意分頁"><button id="status-tab" class="app-tab" role="tab"
+                aria-selected="true" aria-controls="status-panel" tabindex="0"><svg viewBox="0 0 24 24"
+                  aria-hidden="true">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 22v-3a8 8 0 0 1 16 0v3" />
+                </svg>我的狀態</button><button id="friends-tab" class="app-tab" role="tab" aria-selected="false"
+                aria-controls="friends-panel" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="9" cy="8" r="3.5" />
+                  <path d="M2 21v-3a7 7 0 0 1 14 0v3M17 5a3.5 3.5 0 0 1 0 7m2 2a6 6 0 0 1 3 5v2" />
+                </svg>好友狀態</button></div>
+            <div class="home-indicator" aria-hidden="true"></div>
+          </div>
+        </div>
+        <p class="showcase-caption"><span class="caption-dot" aria-hidden="true"></span> 可互動的介面示意 · 試著切換狀態與分頁</p>
+      </div>
+    </section>
+
+
+    <section class="features wrap" id="features" aria-labelledby="features-title">
+      <h2 id="features-title">和好友分享彼此的節奏。</h2>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="mini-status" aria-hidden="true"><span class="mini-pill active"><span>☀</span> 有空</span><span
+              class="mini-pill"><span>☾</span> 勿擾</span></div>
+          <h3>一眼就懂現在的你。</h3>
+          <p>有空或勿擾，加上自己的狀態。<br>分享聯絡意願，不用交代整個行程。</p>
+        </article>
+        <article class="feature-card">
+          <div class="mini-timer" aria-hidden="true"><span class="timer-symbol">◷</span><span>30
+              <small>分鐘後</small></span><span class="timer-line"></span></div>
+          <h3>設定期限，安心專注。</h3>
+          <p>選擇結束時間，到期自動恢復有空。<br>常用的狀態，也能從最近紀錄快速帶入。</p>
+        </article>
+        <article class="feature-card">
+          <div class="mini-people" aria-hidden="true"><span class="person-circle mint">J<i
+                class="dot green"></i></span><span class="person-circle lavender">A<i
+                class="dot purple"></i></span><span class="person-circle sand">S<i class="dot green"></i></span></div>
+          <h3>關心，也尊重空間。</h3>
+          <p>用 ID 找到好友，成為好友就能看到彼此的狀態。</p>
+        </article>
+        <article class="feature-card timezone-feature">
+          <div class="mini-timezone" aria-hidden="true">
+            <span class="mini-pill">🇯🇵 <span class="mini-timezone-clock">13:21 · UTC+9</span></span>
+          </div>
+          <h3>跨時區，也知道何時好聯絡。</h3>
+          <p>想找好友聊天，先看看對方那邊幾點。<br>時區可以跟著手機走，也可以自己選，或不顯示。<br>好友只有在你開啟位置分享後，才會看到你在哪個國家。</p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer wrap"><a class="brand" href="#"><img src="assets/app-icon.png" width="28" height="28"
+        alt=""><span>還活著嗎？</span></a>
+    <nav class="policy-links" aria-label="政策與條款"><a href="privacy.html">隱私權政策</a><a
+        href="terms_conditions.html">使用條款</a></nav><small>© <span id="year">2026</span> 還活著嗎？</small>
+  </footer>
+</body>
+
+</html>
